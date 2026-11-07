@@ -612,7 +612,12 @@ const slot = (title, meta) => `<div class="slot" role="img" aria-label="Espaço 
   <span class="tl"></span><span class="br"></span><span class="cx"></span>
   <span class="lbl"><b>${title}</b><span>${meta}</span></span></div>`;
 const R = s => (window.__IMG && window.__IMG[s]) || s;
-const pic = (src, alt, eager) => `<img class="ph-img" src="${R(src)}" alt="${alt}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const PX="data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+const pic = (src, alt, eager) => eager
+  ? `<img class="ph-img" src="${R(src)}" alt="${alt}" fetchpriority="high" decoding="async">`
+  : `<img class="ph-img" src="${PX}" data-src="${R(src)}" alt="${alt}" decoding="async">`;
+/* carrega a foto quando ela chega perto da tela (sem depender do lazy do navegador) */
+function loadImgs(root){ (root||document).querySelectorAll("img[data-src]").forEach(i=>{ i.src=i.dataset.src; i.removeAttribute("data-src"); }); }
 
 /* ---------- imagens fixas ---------- */
 if (CONFIG.heroImage) $("#heroMedia").classList.add("has-img");
@@ -752,7 +757,11 @@ function revealVisible(){
   document.querySelectorAll(".rv:not(.in),.rv-img:not(.in),.split:not(.in):not(#heroTitle),.rule:not(.in)").forEach(el=>{
     const r=el.getBoundingClientRect(); if(r.height>0 && r.top<innerHeight*0.98 && r.bottom>0) el.classList.add("in");
   });
+  document.querySelectorAll("img[data-src]").forEach(i=>{ const r=i.getBoundingClientRect(); if(r.height>0 && r.top<innerHeight*2.2 && r.bottom>-innerHeight) loadImgs(i.parentNode); });
 }
+/* qualquer bloco revelado carrega a própria foto */
+new MutationObserver(ms=>ms.forEach(m=>{ const t=m.target; if(t.classList&&t.classList.contains("in")) loadImgs(t); }))
+  .observe(document.body,{subtree:true,attributes:true,attributeFilter:["class"]});
 let rvT=null; addEventListener("scroll",()=>{ if(!rvT) rvT=setTimeout(()=>{rvT=null; revealVisible();},120); },{passive:true});
 addEventListener("load",revealVisible); setInterval(revealVisible,1500);
 
