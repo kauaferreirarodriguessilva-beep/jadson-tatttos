@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tattoo JAD — 3 propostas de website</title>
+<meta name="description" content="Três propostas de website para Jadson Felipe (@_tattoojad_), tatuador em Delmiro Gouveia - AL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F0E8;--ink:#171717;--stone:#77736E;--red:#792F2B;--pad:clamp(20px,5vw,72px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Manrope",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+header{padding:clamp(40px,8vh,90px) var(--pad) clamp(30px,5vh,56px);border-bottom:1px solid var(--ink);max-width:1440px;margin:0 auto}
+.k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(52px,9vw,140px);line-height:.9;letter-spacing:-.02em;margin:18px 0 22px}
+h1 em{color:var(--red)}
+header p{max-width:560px;color:#44413d;line-height:1.6}
+main{max-width:1440px;margin:0 auto;padding:clamp(36px,6vw,80px) var(--pad);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+.card{display:flex;flex-direction:column;gap:14px}
+.thumb{position:relative;aspect-ratio:4/5;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.card:hover .thumb img{transform:scale(1.04)}
+.thumb .tag{position:absolute;left:14px;top:14px;padding:7px 12px;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.c1 .tag{background:#090909;color:#F2F0EB}.c2 .tag{background:#050505;color:#fff}.c3 .tag{background:#F4F0E8;color:#171717}
+.n{font-family:"Instrument Serif",Georgia,serif;font-size:56px;line-height:.8;color:var(--red)}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1}
+.card p{color:#55514c;font-size:15px;line-height:1.55}
+.go{display:inline-flex;align-items:center;gap:10px;margin-top:4px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;align-self:flex-start}
+.card:hover .go{color:var(--red);border-color:var(--red)}
+footer{max-width:1440px;margin:0 auto;padding:28px var(--pad) 48px;border-top:1px solid rgba(23,23,23,.15);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--stone)}
+@media (max-width:900px){main{grid-template-columns:1fr}.thumb{aspect-ratio:16/11}}
+</style>
+</head>
+<body>
+<header>
+  <span class="k">Jadson Felipe · @_tattoojad_ · Delmiro Gouveia — AL</span>
+  <h1>Tattoo JAD<br><em>3 propostas</em> de site</h1>
+  <p>Três direções visuais diferentes para o site do Jadson, todas com as fotos reais dos trabalhos dele. Escolha uma para abrir — funcionam no celular e no computador.</p>
+</header>
+<main>
+  <a class="card c1" href="proposta-01/">
+    <div class="thumb"><img src="img/hannya.jpg" alt="Tatuagem Hannya — capa da proposta 01"><span class="tag">Dark Premium</span></div>
+    <span class="n">01</span>
+    <h2>Tattoo JAD</h2>
+    <p>Escuro e elegante, com detalhes em vermelho queimado. Portfólio em grade com filtros, estilos, processo e pedido de orçamento.</p>
+    <span class="go">Abrir proposta →</span>
+  </a>
+  <a class="card c2" href="proposta-02-black-label/">
+    <div class="thumb"><img src="img/sinner.jpg" alt="Tatuagem Sinner — capa da proposta 02"><span class="tag">Black Label</span></div>
+    <span class="n">02</span>
+    <h2>Black Label</h2>
+    <p>Underground e minimalista: preto absoluto, tipografia gigante, abertura cinematográfica e galeria editorial.</p>
+    <span class="go">Abrir proposta →</span>
+  </a>
+  <a class="card c3" href="proposta-03-ink-atelier/">
+    <div class="thumb"><img src="img/seriema.jpg" alt="Tatuagem Seriema — capa da proposta 03"><span class="tag">Ink Atelier</span></div>
+    <span class="n">03</span>
+    <h2>Ink Atelier</h2>
+    <p>Galeria de arte em fundo claro, com cara de revista de luxo: serifas, espaço em branco e as fotos como protagonistas.</p>
+    <span class="go">Abrir proposta →</span>
+  </a>
+</main>
+<footer><span>Propostas de website — Tattoo JAD</span><a href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener">Instagram @_tattoojad_ ↗</a></footer>
+</body>
+</html>

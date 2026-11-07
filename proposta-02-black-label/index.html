@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TATTOO JAD — Black Label · Art on Skin</title>
+<meta name="description" content="TATTOO JAD — Black Label. Jadson Felipe, tattoo artist em Delmiro Gouveia, Alagoas. Black Work, Geek, Old School, Fine Line, Oriental, Floral, Realismo e Lettering.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="TATTOO JAD — Black Label">
+<meta property="og:description" content="Your skin. Your story. Your art. Jadson Felipe — Delmiro Gouveia, AL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BLACK LABEL — tokens
+   ========================================================== */
+:root{
+  --k:#050505; --w:#FFFFFF; --g:#858585; --d:#1B1B1B;
+  --l:rgba(255,255,255,.14); --l2:rgba(255,255,255,.3);
+  --display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --pad:clamp(18px,4vw,56px);
+  --e:cubic-bezier(.76,0,.24,1);
+  --eo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--k);color:var(--w);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+::selection{background:var(--w);color:var(--k)}
+:focus-visible{outline:1px solid var(--w);outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;top:-60px;left:12px;z-index:300;background:var(--w);color:var(--k);padding:10px 14px;font:500 12px var(--mono)}
+.skip:focus{top:12px}
+body::after{content:"";position:fixed;inset:-50%;z-index:250;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+
+.x{padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.dim{color:var(--g)}
+.big{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
+.rule{height:1px;background:var(--l);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--eo)}
+.rule.in{transform:none}
+
+/* ==========================================================
+   BUTTONS / LINKS
+   ========================================================== */
+.b{position:relative;display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 28px;
+  font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--w);overflow:hidden;isolation:isolate;
+  transition:color .5s var(--e)}
+.b::after{content:"";position:absolute;inset:0;background:var(--w);z-index:-1;transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--e)}
+.b:hover{color:var(--k)}
+.b:hover::after{transform:scaleY(1)}
+.b .ar{display:inline-block;transition:transform .5s var(--e)}
+.b:hover .ar{transform:translateX(4px) rotate(-45deg)}
+.b.fill{background:var(--w);color:var(--k)}
+.b.fill::after{background:var(--k)}
+.b.fill:hover{color:var(--w)}
+.b:active{transform:scale(.985)}
+.ul{position:relative;display:inline-block}
+.ul::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--e)}
+.ul:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* ==========================================================
+   INTRO
+   ========================================================== */
+.intro{position:fixed;inset:0;z-index:200;background:var(--k);display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad);
+  transition:transform 1.1s var(--e)}
+.intro.out{transform:translateY(-100%)}
+.intro .row{display:flex;justify-content:space-between}
+.intro .count{font-family:var(--display);font-size:clamp(90px,22vw,320px);line-height:.8;align-self:flex-end}
+.intro .bar{position:absolute;left:0;bottom:0;height:2px;background:var(--w);width:0;transition:width .12s linear}
+.no-intro .intro{display:none}
+
+/* ==========================================================
+   NAV + MENU
+   ========================================================== */
+.nav{position:fixed;inset:0 0 auto;z-index:120;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 var(--pad);mix-blend-mode:difference;color:#fff}
+.mark{display:flex;align-items:center;gap:12px}
+.mark b{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;line-height:1}
+.mark span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;border-left:1px solid #fff;padding-left:12px;line-height:1.2}
+.nav-r{display:flex;align-items:center;gap:32px}
+.nav-r .mono{font-size:11px}
+.menu-btn{display:flex;align-items:center;gap:12px;height:44px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.menu-btn i{position:relative;width:22px;height:10px}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;transition:transform .6s var(--e),top .6s var(--e)}
+.menu-btn i::before{top:0}.menu-btn i::after{top:9px}
+.open-menu .menu-btn i::before{top:5px;transform:rotate(45deg)}
+.open-menu .menu-btn i::after{top:5px;transform:rotate(-45deg)}
+
+.menu{position:fixed;inset:0;z-index:110;background:var(--w);color:var(--k);display:grid;grid-template-rows:1fr auto;padding:96px var(--pad) var(--pad);
+  clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--e);visibility:hidden}
+.open-menu .menu{clip-path:inset(0 0 0 0);visibility:visible}
+.menu ol{list-style:none;align-self:center}
+.menu li{overflow:hidden;border-top:1px solid rgba(5,5,5,.15)}
+.menu li:last-child{border-bottom:1px solid rgba(5,5,5,.15)}
+.menu li a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:.06em 0;font-family:var(--display);font-size:clamp(54px,10.5vw,150px);line-height:1;text-transform:uppercase;
+  transform:translateY(105%);transition:transform 1s var(--eo),padding .5s var(--e)}
+.menu li a small{font:500 11px var(--mono);letter-spacing:.1em}
+.menu li a:hover{padding-left:24px}
+.open-menu .menu li a{transform:none}
+.open-menu .menu li:nth-child(1) a{transition-delay:.25s,0s}
+.open-menu .menu li:nth-child(2) a{transition-delay:.3s,0s}
+.open-menu .menu li:nth-child(3) a{transition-delay:.35s,0s}
+.open-menu .menu li:nth-child(4) a{transition-delay:.4s,0s}
+.open-menu .menu li:nth-child(5) a{transition-delay:.45s,0s}
+.menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:0;transition:opacity .6s .5s}
+.open-menu .menu-foot{opacity:1}
+
+/* ==========================================================
+   PHOTO SLOTS (espaços reservados)
+   ========================================================== */
+.slot{position:relative;width:100%;height:100%;background:#0d0d0d;overflow:hidden}
+.slot::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 60% at 50% 40%,rgba(255,255,255,.07),transparent 70%),
+             repeating-linear-gradient(90deg,transparent 0 79px,rgba(255,255,255,.025) 79px 80px);}
+.slot .cx{position:absolute;left:50%;top:50%;width:44px;height:44px;translate:-50% -50%}
+.slot .cx::before,.slot .cx::after{content:"";position:absolute;background:rgba(255,255,255,.35)}
+.slot .cx::before{left:50%;top:0;bottom:0;width:1px}
+.slot .cx::after{top:50%;left:0;right:0;height:1px}
+.slot .tl,.slot .br{position:absolute;width:18px;height:18px;border-color:rgba(255,255,255,.35);border-style:solid}
+.slot .tl{top:14px;left:14px;border-width:1px 0 0 1px}
+.slot .br{bottom:14px;right:14px;border-width:0 1px 1px 0}
+.slot .lbl{position:absolute;left:14px;bottom:14px;right:44px;display:flex;flex-direction:column;gap:2px;font:400 10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g)}
+.slot .lbl b{color:rgba(255,255,255,.7);font-weight:500}
+.ph-img{width:100%;height:100%;object-fit:cover}
+
+/* reveal de imagem */
+.rv-img{clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--e)}
+.rv-img > *{transform:scale(1.25);transition:transform 1.8s var(--eo)}
+.rv-img.in{clip-path:inset(0 0 0 0)}
+.rv-img.in > *{transform:none}
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--eo),transform 1.2s var(--eo)}
+.rv.in{opacity:1;transform:none}
+.split .ln{display:block;overflow:hidden;padding-bottom:.02em}
+.split .ln > span{display:block;transform:translateY(105%);transition:transform 1.3s var(--eo)}
+.split.in .ln > span{transform:none}
+.split.in .ln:nth-child(2) > span{transition-delay:.08s}
+.split.in .ln:nth-child(3) > span{transition-delay:.16s}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
+.hero-media{position:absolute;inset:0}
+.hero-media .slot .lbl{left:auto;right:var(--pad);bottom:auto;top:96px;align-items:flex-end;text-align:right}
+.hero-media .slot .tl,.hero-media .slot .br,.hero-media .slot .cx{display:none}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.35) 0%,rgba(5,5,5,0) 30%,rgba(5,5,5,.2) 55%,rgba(5,5,5,.92) 100%)}
+.hero-media.zoom > *{animation:heroZoom 2.6s var(--eo) both}
+@keyframes heroZoom{from{transform:scale(1.18)}to{transform:scale(1)}}
+.hero-in{position:absolute;inset:auto 0 0 0;z-index:2;padding:0 var(--pad) clamp(24px,4vh,44px)}
+.hero h1{font-size:clamp(68px,13.6vw,236px)}
+.hero h1 .ln:nth-child(3) span{color:transparent;-webkit-text-stroke:1.5px var(--w)}
+.hero-bot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-top:clamp(20px,3.6vh,40px);padding-top:clamp(16px,2.4vh,24px);border-top:1px solid var(--l2)}
+.hero-who b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(22px,2.2vw,30px);letter-spacing:.03em;line-height:1}
+.hero-who span{display:block;margin-top:8px}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.hero-side{position:absolute;z-index:2;right:var(--pad);top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg)}
+
+/* ticker */
+.ticker{border-block:1px solid var(--l);overflow:hidden;white-space:nowrap;padding:18px 0}
+.ticker-in{display:inline-flex;animation:tick 38s linear infinite}
+.ticker span{font-family:var(--display);font-size:clamp(34px,5vw,64px);line-height:1;text-transform:uppercase;padding-right:.6em;display:inline-flex;align-items:center;gap:.6em}
+.ticker span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--w)}
+.ticker span::after{content:"";width:.22em;height:.22em;background:var(--w);transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ==========================================================
+   SECTIONS
+   ========================================================== */
+.sec{padding:clamp(96px,14vw,200px) 0}
+.tag{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:clamp(36px,5vw,72px)}
+
+/* Manifesto */
+.mani-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,28px)}
+.mani h2{grid-column:1/-1;font-size:clamp(72px,13.5vw,240px)}
+.mani h2 .ln:last-child span{padding-left:12vw}
+.mani-photo{grid-column:1/6;aspect-ratio:3/4;margin-top:clamp(40px,6vw,96px)}
+.mani-txt{grid-column:7/12;margin-top:clamp(40px,10vw,200px);align-self:start}
+.mani-txt p{font-size:clamp(20px,2vw,30px);line-height:1.35;font-weight:300;letter-spacing:-.01em}
+.mani-txt p::first-letter{font-family:var(--display);font-size:3.1em;float:left;line-height:.82;margin:.06em .12em 0 0}
+.mani-sign{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--l)}
+
+/* Works */
+.works{background:var(--k)}
+.works-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px}
+.works h2{font-size:clamp(68px,12vw,210px)}
+.fl{display:flex;flex-wrap:wrap;gap:6px 22px;margin:clamp(32px,4vw,56px) 0 clamp(36px,5vw,72px);padding:18px 0;border-block:1px solid var(--l)}
+.fl button{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g);padding:6px 0;transition:color .3s;display:inline-flex;gap:6px}
+.fl button::before{content:"[";opacity:0;transition:opacity .3s}
+.fl button::after{content:"]";opacity:0;transition:opacity .3s}
+.fl button sup{font-size:9px}
+.fl button:hover{color:var(--w)}
+.fl button[aria-pressed="true"]{color:var(--w)}
+.fl button[aria-pressed="true"]::before,.fl button[aria-pressed="true"]::after{opacity:1}
+
+.wg{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,28px);row-gap:clamp(48px,7vw,110px);align-items:start}
+.w{position:relative;cursor:none;text-align:left;display:block;transition:opacity .45s var(--e)}
+.w.hide{display:none}
+.w.fade{opacity:0}
+.w .frame{position:relative;overflow:hidden}
+.w .frame .zoomer{position:absolute;inset:0;transition:transform 1.2s var(--eo),filter .6s}
+.w:hover .frame .zoomer{transform:scale(1.05)}
+.w .cap{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
+.w .cap .t{font-family:var(--display);font-size:clamp(20px,1.8vw,26px);line-height:1;text-transform:uppercase}
+.w .cap .n{font:400 11px var(--mono);color:var(--g);letter-spacing:.08em}
+/* layout editorial (desktop) — aplicado via data-l */
+.w[data-l="a"]{grid-column:1/8}.w[data-l="a"] .frame{aspect-ratio:4/5}
+.w[data-l="b"]{grid-column:9/13;margin-top:30vh}.w[data-l="b"] .frame{aspect-ratio:3/4}
+.w[data-l="c"]{grid-column:2/6}.w[data-l="c"] .frame{aspect-ratio:3/4}
+.w[data-l="d"]{grid-column:7/13;margin-top:12vh}.w[data-l="d"] .frame{aspect-ratio:1/1}
+.w[data-l="e"]{grid-column:1/13}.w[data-l="e"] .frame{aspect-ratio:16/8}
+.w[data-l="f"]{grid-column:1/5}.w[data-l="f"] .frame{aspect-ratio:4/5}
+.w[data-l="g"]{grid-column:6/13;margin-top:8vh}.w[data-l="g"] .frame{aspect-ratio:5/4}
+.w[data-l="h"]{grid-column:4/10}.w[data-l="h"] .frame{aspect-ratio:4/5}
+.filtered .w{grid-column:span 4 !important;margin-top:0 !important}
+.filtered .w .frame{aspect-ratio:4/5 !important}
+.empty{padding:72px 0;text-align:center}
+.hero-media .ph-img{object-position:50% 38%}
+.hero-media.has-img::after{background:linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,.45) 40%,rgba(5,5,5,.7) 70%,rgba(5,5,5,.95) 100%)}
+.w.more{display:none}
+.show-all .w.more{display:block}
+.more-row{display:flex;justify-content:center;margin-top:clamp(56px,7vw,100px)}
+.show-all .more-row{display:none}
+.works-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;margin-top:clamp(64px,8vw,120px);padding-top:24px;border-top:1px solid var(--l)}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:150;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:var(--w);color:var(--k);display:grid;place-items:center;
+  font:500 11px var(--mono);letter-spacing:.12em;pointer-events:none;transform:scale(0);transition:transform .45s var(--eo)}
+.cur.on{transform:scale(1)}
+@media (hover:none),(pointer:coarse){.cur{display:none}.w{cursor:pointer}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:180;background:var(--k);display:grid;grid-template-rows:72px 1fr auto;visibility:hidden;clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--e),visibility 0s .9s}
+.lb.open{visibility:visible;clip-path:inset(0);transition:clip-path .9s var(--e)}
+.lb-top{display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);border-bottom:1px solid var(--l)}
+.lb-x{display:flex;align-items:center;gap:12px;height:44px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.lb-x i{position:relative;width:18px;height:18px}
+.lb-x i::before,.lb-x i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:currentColor;transform:rotate(45deg)}
+.lb-x i::after{transform:rotate(-45deg)}
+.lb-stage{position:relative;display:grid;place-items:center;padding:clamp(16px,3vh,32px) var(--pad);min-height:0}
+.lb-img{height:100%;max-height:calc(100svh - 200px);aspect-ratio:4/5;max-width:100%;opacity:0;transform:translateY(24px);transition:opacity .6s var(--eo),transform .8s var(--eo)}
+.lb-img.ready{opacity:1;transform:none}
+.lb-img img{width:100%;height:100%;object-fit:contain;filter:none}
+.lb-bot{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:18px var(--pad);border-top:1px solid var(--l)}
+.lb-bot .t{font-family:var(--display);font-size:clamp(28px,3.2vw,44px);line-height:1;text-transform:uppercase}
+.lb-nav{display:flex;gap:8px}
+.lb-nav button{width:52px;height:52px;border:1px solid var(--l2);display:grid;place-items:center;font:400 18px var(--mono);transition:background .3s,color .3s}
+.lb-nav button:hover{background:var(--w);color:var(--k)}
+
+/* Artist */
+.artist{background:var(--d)}
+.art-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,28px);align-items:end}
+.art-grid h2{grid-column:1/-1;font-size:clamp(76px,15vw,260px);margin-bottom:clamp(36px,5vw,72px)}
+.art-photo{grid-column:1/7;aspect-ratio:4/5}
+.art-info{grid-column:8/13}
+.art-info .name{font-family:var(--display);font-size:clamp(44px,5.6vw,92px);line-height:.9;text-transform:uppercase}
+.art-info .role{margin:14px 0 36px}
+.spec{list-style:none;border-top:1px solid var(--l)}
+.spec li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--l);font-size:17px}
+.spec li span:first-child{padding-top:4px}
+.art-info .b{margin-top:32px}
+
+/* Booking */
+.book h2{font-size:clamp(64px,11.6vw,200px)}
+.book h2 .ln:nth-child(2) span{color:transparent;-webkit-text-stroke:1.5px var(--w)}
+.book-grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,6vw,100px);margin-top:clamp(56px,7vw,110px)}
+.book-aside p{color:var(--g);font-size:15px;max-width:320px;margin:16px 0 28px}
+.book-aside .b{width:100%;justify-content:space-between}
+.honest{margin-top:24px;padding:16px;border:1px dashed var(--l2);font:400 11px/1.6 var(--mono);letter-spacing:.04em;color:var(--g);text-transform:none}
+form{counter-reset:q}
+.q{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:26px 0;border-top:1px solid var(--l)}
+.q:last-of-type{border-bottom:1px solid var(--l)}
+.q::before{counter-increment:q;content:"0" counter(q);font:400 11px var(--mono);color:var(--g);padding-top:4px}
+.q label,.q legend{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.q fieldset{border:0;min-width:0}
+.q input[type=text],.q textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--l2);padding:6px 0 12px;font-size:clamp(20px,2vw,28px);font-weight:300;border-radius:0;transition:border-color .3s}
+.q textarea{resize:vertical;min-height:120px;font-size:19px;line-height:1.45}
+.q input::placeholder,.q textarea::placeholder{color:#4a4a4a}
+.q input:focus,.q textarea:focus{outline:none;border-color:var(--w)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{margin:0;cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border:1px solid var(--l2);font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#cfcfcf;transition:background .3s,color .3s,border-color .3s}
+.opts span:hover{border-color:var(--w);color:var(--w)}
+.opts input:checked + span{background:var(--w);color:var(--k);border-color:var(--w)}
+.opts input:focus-visible + span{outline:1px solid var(--w);outline-offset:3px}
+.err{display:none;margin-top:10px;font:400 11px var(--mono);color:#ff8d8d;letter-spacing:.04em}
+.q.bad .err{display:block}
+.q.bad input[type=text],.q.bad textarea{border-color:#ff8d8d}
+.drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:140px;border:1px dashed var(--l2);text-align:center;padding:20px;cursor:pointer;transition:border-color .3s,background .3s}
+.drop:hover,.drop.over{border-color:var(--w);background:rgba(255,255,255,.03)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop b{font-family:var(--display);font-weight:400;font-size:24px;text-transform:uppercase;line-height:1}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.thumbs figure{position:relative;width:84px;height:84px;overflow:hidden;background:var(--d)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs button{position:absolute;top:4px;right:4px;width:22px;height:22px;background:var(--k);color:var(--w);font:400 12px var(--mono);display:grid;place-items:center}
+.submit-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:32px}
+.submit-row .b{height:64px;padding:0 36px}
+
+.out{display:none;margin-top:32px;border:1px solid var(--l2);padding:clamp(20px,3vw,36px)}
+.out.show{display:block;animation:up .8s var(--eo)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.out h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,3vw,44px);line-height:1;text-transform:uppercase;margin:10px 0 12px}
+.out p{color:var(--g);font-size:15px;max-width:560px;margin-bottom:18px}
+.out pre{white-space:pre-wrap;font:400 13px/1.7 var(--mono);background:var(--d);padding:18px;margin-bottom:18px;color:#d6d6d6}
+.out .row{display:flex;flex-wrap:wrap;gap:10px}
+.out .b{height:50px}
+
+/* Footer */
+.foot{border-top:1px solid var(--l);padding:clamp(64px,8vw,120px) 0 28px;overflow:hidden}
+.foot .big{font-size:clamp(84px,18.5vw,330px);line-height:.8}
+.foot .big .o{color:transparent;-webkit-text-stroke:1.5px var(--w)}
+.foot-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:clamp(48px,6vw,90px);padding-top:24px;border-top:1px solid var(--l)}
+.foot-row div{display:flex;flex-direction:column;gap:8px}
+.foot-row a{font-size:15px}
+.foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:56px}
+
+/* reduced motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition-duration:.01ms !important;transition-delay:0s !important}
+  .rv,.rv-img,.split .ln > span,.rule{opacity:1;transform:none;clip-path:none}
+  .rv-img > *{transform:none}
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width:1000px){
+  .nav-r .hide-sm{display:none}
+  .hero-side{display:none}
+  .hero-bot{grid-template-columns:1fr}
+  .mani-photo{grid-column:1/-1;aspect-ratio:4/5;max-width:560px}
+  .mani-txt{grid-column:1/-1;margin-top:40px}
+  .mani h2 .ln:last-child span{padding-left:0}
+  .wg{grid-template-columns:repeat(6,1fr)}
+  .w[data-l]{grid-column:span 6;margin-top:0}
+  .w[data-l="b"],.w[data-l="c"],.w[data-l="f"]{grid-column:span 3}
+  .w[data-l="b"],.w[data-l="f"]{margin-top:12vh}
+  .filtered .w{grid-column:span 3 !important}
+  .art-photo,.art-info{grid-column:1/-1}
+  .art-photo{max-width:560px}
+  .art-info{margin-top:36px}
+  .book-grid{grid-template-columns:1fr}
+  .foot-row{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .nav{height:64px}
+  .mark span{display:none}
+  .hero{min-height:560px}
+  .hero-ctas{width:100%}
+  .hero-ctas .b{flex:1 1 100%;justify-content:space-between}
+  .hero-media .slot .lbl{top:80px}
+  .works-head{grid-template-columns:1fr}
+  .fl{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);scrollbar-width:none}
+  .fl::-webkit-scrollbar{display:none}
+  .fl button{white-space:nowrap}
+  .wg{row-gap:44px}
+  .w[data-l="b"],.w[data-l="f"]{margin-top:0}
+  .w[data-l="b"] .frame,.w[data-l="c"] .frame,.w[data-l="f"] .frame{aspect-ratio:3/4}
+  .w[data-l="e"] .frame{aspect-ratio:4/3}
+  .w .cap .t{font-size:18px}
+  .q{grid-template-columns:1fr;gap:4px}
+  .spec li{grid-template-columns:1fr;gap:2px}
+  .submit-row .b{width:100%;justify-content:space-between}
+  .lb-img{max-height:calc(100svh - 220px)}
+  .foot-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- INTRO -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="row mono"><span>TATTOO JAD</span><span>BLACK LABEL</span></div>
+  <div class="row"><span class="mono dim">ART ON SKIN —<br>DELMIRO GOUVEIA, AL</span><span class="count" id="count">000</span></div>
+  <span class="bar" id="bar"></span>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="#top" class="mark" aria-label="TATTOO JAD, início"><b>TATTOO JAD</b><span>Black Label<br>Art on Skin</span></a>
+  <div class="nav-r">
+    <a href="#booking" class="mono ul hide-sm">Book your tattoo</a>
+    <a href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener" class="mono ul hide-sm">Instagram ↗</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu"><span id="menuLbl">Menu</span><i></i></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu" aria-hidden="true">
+  <ol>
+    <li><a href="#manifesto">Manifesto <small>(01)</small></a></li>
+    <li><a href="#works">Selected works <small>(02)</small></a></li>
+    <li><a href="#artist">The artist <small>(03)</small></a></li>
+    <li><a href="#booking">Booking <small>(04)</small></a></li>
+    <li><a href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener">Instagram <small>↗</small></a></li>
+  </ol>
+  <div class="menu-foot"><span>Jadson Felipe — Tattoo artist</span><span>Delmiro Gouveia — Alagoas</span><span>Seg — Sáb · 09h — 21h</span></div>
+</nav>
+
+<div class="cur" id="cur" aria-hidden="true">VIEW</div>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia"></div>
+  <span class="hero-side mono dim">Black Label — Art on Skin — 2026</span>
+  <div class="hero-in">
+    <h1 class="big split" id="heroTitle">
+      <span class="ln"><span>Your skin.</span></span>
+      <span class="ln"><span>Your story.</span></span>
+      <span class="ln"><span>Your art.</span></span>
+    </h1>
+    <div class="hero-bot rv" id="heroBot">
+      <div class="hero-who"><b>Jadson Felipe</b><span class="mono dim">Tattoo artist — Delmiro Gouveia, AL.</span></div>
+      <div class="hero-ctas">
+        <a href="#works" class="b fill">Explore the art <span class="ar">→</span></a>
+        <a href="#booking" class="b">Book your tattoo <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-in" id="ticker"></div></div>
+
+<!-- MANIFESTO -->
+<section class="sec mani" id="manifesto">
+  <div class="x">
+    <div class="tag mono dim"><span>(01) Manifesto</span><span>Black Label</span></div>
+    <div class="mani-grid">
+      <h2 class="big split"><span class="ln"><span>Art is</span></span><span class="ln"><span>personal.</span></span></h2>
+      <div class="mani-photo rv-img" id="maniPhoto"></div>
+      <div class="mani-txt rv">
+        <p>Mais do que desenhos, tatuagens são expressões de identidade. Cada projeto começa com uma ideia e ganha vida através da arte, dos detalhes e da personalidade de quem carrega.</p>
+        <div class="mani-sign mono dim"><span>— Tattoo Jad</span><span>Art on skin</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="sec works" id="works">
+  <div class="x">
+    <div class="tag mono dim"><span>(02) Portfolio</span><span id="worksCount"></span></div>
+    <div class="works-head">
+      <h2 class="big split"><span class="ln"><span>Selected</span></span><span class="ln"><span>works.</span></span></h2>
+      <p class="mono dim rv" style="max-width:240px">Clique em uma imagem para ver em tela cheia.</p>
+    </div>
+    <div class="fl" id="fl" role="toolbar" aria-label="Filtrar por estilo"></div>
+    <div class="wg" id="wg"></div>
+    <div class="more-row" id="moreRow"><button class="b" id="moreBtn">Ver todos os trabalhos <span class="ar">↓</span></button></div>
+    <p class="empty mono dim" id="empty" hidden>Nenhum trabalho deste estilo aqui ainda — veja os mais recentes no Instagram.</p>
+    <div class="works-foot">
+      <span class="mono dim">Trabalhos recentes no Instagram</span>
+      <a class="b" href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener">@_tattoojad_ <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIST -->
+<section class="sec artist" id="artist">
+  <div class="x">
+    <div class="tag mono dim"><span>(03) The artist</span><span>Jadson Felipe</span></div>
+    <div class="art-grid">
+      <h2 class="big split"><span class="ln"><span>The artist.</span></span></h2>
+      <div class="art-photo rv-img" id="artPhoto"></div>
+      <div class="art-info rv">
+        <div class="name">Jadson<br>Felipe</div>
+        <div class="role mono dim">Tattoo artist — @_tattoojad_</div>
+        <ul class="spec">
+          <li><span class="mono dim">Base</span><span>Tatuador em Delmiro Gouveia - AL</span></li>
+          <li><span class="mono dim">Atendimento</span><span>Segunda a sábado</span></li>
+          <li><span class="mono dim">Horário</span><span>09h às 21h</span></li>
+          <li><span class="mono dim">Orçamentos</span><span>Instagram ou WhatsApp</span></li>
+        </ul>
+        <a href="#booking" class="b fill">Book your tattoo <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec book" id="booking">
+  <div class="x">
+    <div class="tag mono dim"><span>(04) Booking</span><span>Orçamento</span></div>
+    <h2 class="big split"><span class="ln"><span>Let's create</span></span><span class="ln"><span>something</span></span><span class="ln"><span>permanent.</span></span></h2>
+
+    <div class="book-grid">
+      <aside class="book-aside rv">
+        <span class="mono dim">Como funciona</span>
+        <p>Preencha os detalhes da sua ideia. O site monta seu pedido completo, e você envia pelo Direct do Instagram junto com suas referências.</p>
+        <a class="b" href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener">Falar no Instagram <span class="ar">→</span></a>
+        <div class="honest">Este formulário ainda não envia nada sozinho. Ao clicar em “Solicitar orçamento”, você recebe a mensagem pronta para copiar e enviar ao Jadson.</div>
+      </aside>
+
+      <form id="bookForm" novalidate class="rv">
+        <div class="q" data-req="nome"><div><label for="nome">Nome</label><input type="text" id="nome" name="nome" autocomplete="name" placeholder="Seu nome"><div class="err">Informe seu nome.</div></div></div>
+        <div class="q" data-req="contato"><div><label for="contato">Instagram ou WhatsApp</label><input type="text" id="contato" name="contato" placeholder="@seuperfil ou (82) 9 0000-0000"><div class="err">Informe um contato para retorno.</div></div></div>
+        <div class="q" data-req="estilo"><fieldset><legend>Estilo desejado</legend><div class="opts" id="optEstilo"></div><div class="err">Escolha um estilo.</div></fieldset></div>
+        <div class="q" data-req="local"><fieldset><legend>Local do corpo</legend><div class="opts" id="optLocal"></div><div class="err">Escolha o local do corpo.</div></fieldset></div>
+        <div class="q" data-req="tamanho"><fieldset><legend>Tamanho aproximado</legend><div class="opts" id="optTam"></div><div class="err">Escolha um tamanho aproximado.</div></fieldset></div>
+        <div class="q" data-req="ideia"><div><label for="ideia">Descrição da ideia</label><textarea id="ideia" name="ideia" placeholder="O que você imagina? Elementos, significado, detalhes…"></textarea><div class="err">Descreva sua ideia.</div></div></div>
+        <div class="q"><div>
+          <label for="refs">Referência visual <span style="text-transform:none">(opcional)</span></label>
+          <div class="drop" id="drop"><input type="file" id="refs" accept="image/*" multiple><b>Adicionar referências</b><span class="mono dim">Arraste imagens ou toque para escolher · até 6</span></div>
+          <div class="thumbs" id="thumbs"></div>
+        </div></div>
+        <div class="submit-row">
+          <span class="mono dim">Resposta pelo contato informado</span>
+          <button type="submit" class="b fill">Solicitar orçamento <span class="ar">→</span></button>
+        </div>
+        <div class="out" id="out" aria-live="polite">
+          <span class="mono dim">Pedido pronto — ainda não enviado</span>
+          <h3>Agora é só enviar.</h3>
+          <p id="outHint">Copie a mensagem e envie no Direct do Instagram. Anexe suas referências na conversa.</p>
+          <pre id="outMsg"></pre>
+          <div class="row">
+            <button type="button" class="b fill" id="copy">Copiar mensagem</button>
+            <a class="b" href="https://ig.me/m/_tattoojad_" target="_blank" rel="noopener">Abrir Direct <span class="ar">→</span></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="x">
+    <div class="big" aria-label="Tattoo Jad. Art on skin."><div>Tattoo Jad.</div><div class="o">Art on skin.</div></div>
+    <div class="foot-row">
+      <div><span class="mono dim">Local</span><span>Delmiro Gouveia — Alagoas</span></div>
+      <div><span class="mono dim">Atendimento</span><span>Seg — Sáb · 09h às 21h</span></div>
+      <div><span class="mono dim">Instagram</span><a class="ul" href="https://www.instagram.com/_tattoojad_/" target="_blank" rel="noopener" style="align-self:flex-start">@_tattoojad_ ↗</a></div>
+      <div><span class="mono dim">Orçamento</span><a class="ul" href="#booking" style="align-self:flex-start">Book your tattoo</a></div>
+    </div>
+    <div class="foot-bot mono dim"><span>© <span id="yr"></span> Tattoo Jad — Black Label</span><a href="#top" class="ul">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada" aria-hidden="true">
+  <div class="lb-top"><span class="mono dim" id="lbN"></span><button class="lb-x" id="lbX">Close <i></i></button></div>
+  <div class="lb-stage" id="lbStage"><div class="lb-img" id="lbImg"></div></div>
+  <div class="lb-bot"><div><span class="mono dim" id="lbS"></span><div class="t" id="lbT"></div></div>
+    <div class="lb-nav"><button id="lbP" aria-label="Anterior">←</button><button id="lbNx" aria-label="Próxima">→</button></div></div>
+</div>
+
+<script>
+/* ==========================================================
+   CONFIG — troque aqui pelas fotos reais
+   heroImage / manifestoImage / artistImage: caminho da foto
+   WORKS[].src: foto real do trabalho (WebP ~1600px).
+   Sem src → espaço reservado com legenda.
+   ========================================================== */
+const CONFIG = { heroImage:"../img/sinner.jpg", manifestoImage:"../img/mandala.jpg", artistImage:"" };
+
+const STYLES = ["Black Work","Geek","Old School","Fine Line","Oriental","Floral","Realismo","Lettering","Colorido"];
+
+/* l = posição na grade editorial (a–h) */
+const WORKS = [
+  { style:"Oriental", l:"a", title:"Hannya", src:"../img/hannya.jpg" },
+  { style:"Fine Line", l:"b", title:"Gramofone", src:"../img/gramofone.jpg" },
+  { style:"Black Work", l:"e", title:"Águia do sertão", src:"../img/aguia-sertao.jpg" },
+  { style:"Geek", l:"c", title:"Espadachim", src:"../img/espadachim.jpg" },
+  { style:"Black Work", l:"d", title:"Tigre", src:"../img/tigre.jpg" },
+  { style:"Realismo", l:"h", title:"Xadrez", src:"../img/xadrez.jpg" },
+  { style:"Lettering", l:"f", title:"Kanji", src:"../img/kanji.jpg" },
+  { style:"Floral", l:"g", title:"Lírios", src:"../img/lirio-ombro.jpg" },
+  { style:"Lettering", l:"a", title:"Sinner", src:"../img/sinner.jpg" },
+  { style:"Geek", l:"b", title:"Anime", src:"../img/anime.jpg" },
+  { style:"Black Work", l:"e", title:"Dragões", src:"../img/dragoes.jpg" },
+  { style:"Old School", l:"c", title:"Andorinhas", src:"../img/andorinhas.jpg" },
+  { style:"Oriental", l:"d", title:"Dragão vermelho", src:"../img/dragao-vermelho.jpg" },
+  { style:"Realismo", l:"h", title:"Mãos em prece", src:"../img/maos-em-prece.jpg" },
+  { style:"Floral", l:"f", title:"Rosa", src:"../img/rosa.jpg" },
+  { style:"Geek", l:"g", title:"Sharingan", src:"../img/sharingan.jpg" },
+  { style:"Oriental", l:"a", title:"Tigre oriental", src:"../img/tigre-oriental.jpg" },
+  { style:"Fine Line", l:"b", title:"Insetos", src:"../img/insetos.jpg" },
+  { style:"Colorido", l:"c", title:"Água-viva", src:"../img/agua-viva.jpg" },
+  { style:"Geek", l:"d", title:"Marca", src:"../img/marca-sacrificio.jpg" },
+  { style:"Lettering", l:"h", title:"Quem me protege", src:"../img/quem-me-protege.jpg" },
+  { style:"Floral", l:"f", title:"Mandala", src:"../img/mandala.jpg" },
+  { style:"Lettering", l:"g", title:"Intensa", src:"../img/intensa.jpg" },
+  { style:"Black Work", l:"a", title:"Cruz", src:"../img/cruz.jpg" },
+  { style:"Geek", l:"b", title:"Cavaleiro", src:"../img/cavaleiro.jpg" },
+  { style:"Realismo", l:"c", title:"Anjo", src:"../img/anjo.jpg" },
+  { style:"Black Work", l:"d", title:"Seriema", src:"../img/seriema.jpg" },
+  { style:"Fine Line", l:"h", title:"Unicórnio", src:"../img/unicornio.jpg" },
+  { style:"Realismo", l:"f", title:"Ursinho", src:"../img/ursinho.jpg" },
+  { style:"Colorido", l:"g", title:"Coração", src:"../img/coracao-quebra-cabeca.jpg" },
+  { style:"Realismo", l:"a", title:"Anúbis", src:"../img/anubis.jpg" },
+  { style:"Fine Line", l:"b", title:"Lírio na coluna", src:"../img/lirio-coluna.jpg" },
+];
+
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(3,"0");
+const slot = (title, meta) => `<div class="slot" role="img" aria-label="Espaço reservado para foto: ${title}">
+  <span class="tl"></span><span class="br"></span><span class="cx"></span>
+  <span class="lbl"><b>${title}</b><span>${meta}</span></span></div>`;
+const R = s => (window.__IMG && window.__IMG[s]) || s;
+const pic = (src, alt, eager) => `<img class="ph-img" src="${R(src)}" alt="${alt}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+
+/* ---------- imagens fixas ---------- */
+if (CONFIG.heroImage) $("#heroMedia").classList.add("has-img");
+$("#heroMedia").innerHTML = CONFIG.heroImage ? pic(CONFIG.heroImage,"Tatuagem de Jadson Felipe",true) : slot("Hero — fotografia de tatuagem","Foto a adicionar · tela cheia");
+$("#maniPhoto").innerHTML = `<div style="position:absolute;inset:0">${CONFIG.manifestoImage ? pic(CONFIG.manifestoImage,"Tatuagem mandala de Jadson Felipe em preto e branco").replace('loading="lazy"','') : slot("Manifesto — foto P&B","Foto a adicionar · 3:4")}</div>`;
+$("#maniPhoto").style.position="relative";
+$("#artPhoto").innerHTML = `<div style="position:absolute;inset:0">${CONFIG.artistImage ? pic(CONFIG.artistImage,"Jadson Felipe, tattoo artist") : slot("Retrato — Jadson Felipe","Foto a adicionar · 4:5")}</div>`;
+$("#artPhoto").style.position="relative";
+
+/* ---------- ticker ---------- */
+const tk = ["Black Label","Art on Skin","Tattoo Jad","Delmiro Gouveia — AL"];
+$("#ticker").innerHTML = [...tk,...tk,...tk,...tk].map(t=>`<span>${t}</span>`).join("");
+
+/* ---------- gallery ---------- */
+const wg = $("#wg"), fl = $("#fl");
+wg.innerHTML = WORKS.map((w,i)=>{
+  const t = w.title || w.style, n = pad(i+1);
+  return `<button class="w rv${i>=12?" more":""}" data-l="${w.l}" data-s="${w.style}" data-i="${i}" aria-label="Ampliar ${t}, ${w.style}">
+    <div class="frame rv-img"><div class="zoomer">${w.src ? pic(w.src,`Tatuagem ${t} (${w.style}) feita por Jadson Felipe`) : slot(`${t} — ${n}`,"Foto do trabalho a adicionar")}</div></div>
+    <div class="cap"><span class="t">${t}</span><span class="n">${w.style} · N° ${n}</span></div></button>`;
+}).join("");
+const count = WORKS.reduce((m,w)=>(m[w.style]=(m[w.style]||0)+1,m),{});
+fl.innerHTML = [["Todos",WORKS.length],...STYLES.map(s=>[s,count[s]||0])]
+  .map(([s,c],i)=>`<button data-f="${i?s:"*"}" aria-pressed="${!i}">${s}<sup>${String(c).padStart(2,"0")}</sup></button>`).join("");
+$("#worksCount").textContent = `${pad(WORKS.length)} works`;
+let cf = "*";
+fl.addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b || b.dataset.f===cf) return;
+  cf = b.dataset.f; fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  const items=[...wg.children]; items.forEach(x=>x.classList.add("fade"));
+  setTimeout(()=>{
+    wg.classList.toggle("filtered", cf!=="*");
+    if (cf!=="*") wg.closest(".x").classList.add("show-all");
+    items.forEach(x=>{ x.classList.toggle("hide", cf!=="*" && x.dataset.s!==cf); x.classList.add("in"); x.querySelector(".rv-img").classList.add("in"); });
+    $("#empty").hidden = items.some(x=>!x.classList.contains("hide"));
+    requestAnimationFrame(()=>items.forEach(x=>x.classList.remove("fade")));
+  },420);
+});
+
+$("#moreBtn").addEventListener("click",()=>{ wg.closest(".x").classList.add("show-all");
+  wg.querySelectorAll(".w.more").forEach(x=>{x.classList.add("in"); x.querySelector(".rv-img").classList.add("in");}); });
+$("#moreBtn").textContent = `Ver todos os ${WORKS.length} trabalhos ↓`;
+
+/* ---------- cursor ---------- */
+const cur = $("#cur");
+if (matchMedia("(pointer:fine)").matches){
+  let x=0,y=0,cx=0,cy=0;
+  addEventListener("mousemove",e=>{x=e.clientX;y=e.clientY});
+  (function loop(){cx+=(x-cx)*.18;cy+=(y-cy)*.18;cur.style.translate=`${cx}px ${cy}px`;requestAnimationFrame(loop)})();
+  wg.addEventListener("mouseover",e=>cur.classList.toggle("on",!!e.target.closest(".w")));
+  wg.addEventListener("mouseleave",()=>cur.classList.remove("on"));
+}
+
+/* ---------- lightbox ---------- */
+const lb=$("#lb"), lbImg=$("#lbImg"); let list=[],pos=0,back=null;
+function draw(){
+  const i=list[pos], w=WORKS[i], n=pad(i+1);
+  lbImg.classList.remove("ready");
+  setTimeout(()=>{
+    lbImg.innerHTML = w.src ? `<img src="${R(w.src)}" alt="Tatuagem ${w.title} (${w.style}) feita por Jadson Felipe">` : slot(`${w.style} — ${n}`,"Foto do trabalho a adicionar");
+    $("#lbT").textContent=w.title||w.style; $("#lbS").textContent=`${w.style} · N° ${n}`;
+    $("#lbN").textContent=`${String(pos+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")}`;
+    requestAnimationFrame(()=>lbImg.classList.add("ready"));
+  }, lb.classList.contains("open")?260:350);
+}
+function openLb(i){
+  back=document.activeElement;
+  list=[...wg.querySelectorAll(".w:not(.hide)")].map(x=>+x.dataset.i); pos=Math.max(0,list.indexOf(i));
+  lb.classList.add("open"); lb.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; cur.classList.remove("on");
+  draw(); $("#lbX").focus();
+}
+function closeLb(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); document.body.style.overflow=""; back&&back.focus(); }
+const step=d=>{pos=(pos+d+list.length)%list.length;draw()};
+wg.addEventListener("click",e=>{const w=e.target.closest(".w"); if(w) openLb(+w.dataset.i)});
+$("#lbX").onclick=closeLb; $("#lbP").onclick=()=>step(-1); $("#lbNx").onclick=()=>step(1);
+$("#lbStage").addEventListener("click",e=>{ if(e.target.id==="lbStage") closeLb(); });
+addEventListener("keydown",e=>{
+  if(!lb.classList.contains("open")) return;
+  if(e.key==="Escape") closeLb(); if(e.key==="ArrowRight") step(1); if(e.key==="ArrowLeft") step(-1);
+  if(e.key==="Tab"){const f=[...lb.querySelectorAll("button")],a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+let sx=null; lb.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{if(sx==null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)step(d<0?1:-1);sx=null});
+
+/* ---------- menu ---------- */
+const mb=$("#menuBtn"), menu=$("#menu");
+function setMenu(o){ document.body.classList.toggle("open-menu",o); mb.setAttribute("aria-expanded",o); menu.setAttribute("aria-hidden",!o);
+  $("#menuLbl").textContent=o?"Close":"Menu"; document.body.style.overflow=o?"hidden":""; }
+mb.onclick=()=>setMenu(!document.body.classList.contains("open-menu"));
+menu.addEventListener("click",e=>{ if(e.target.closest("a")) setMenu(false); });
+addEventListener("keydown",e=>{ if(e.key==="Escape"&&document.body.classList.contains("open-menu")) setMenu(false); });
+
+/* ---------- booking ---------- */
+const radios=(id,name,arr)=>$(id).innerHTML=arr.map(v=>`<label><input type="radio" name="${name}" value="${v}"><span>${v}</span></label>`).join("");
+radios("#optEstilo","estilo",[...STYLES,"Ainda não sei"]);
+radios("#optLocal","local",["Braço","Antebraço","Mão","Ombro","Peito","Costas","Costela","Perna","Panturrilha","Pé","Pescoço","Outro"]);
+radios("#optTam","tamanho",["Até 5 cm","5 a 10 cm","10 a 20 cm","Mais de 20 cm","Fechamento"]);
+
+const files=[]; const thumbs=$("#thumbs"), drop=$("#drop"), inp=$("#refs");
+function addFiles(list){ [...list].filter(f=>f.type.startsWith("image/")).forEach(f=>{ if(files.length<6) files.push({f,url:URL.createObjectURL(f)}) }); renderThumbs(); }
+function renderThumbs(){ thumbs.innerHTML=files.map((x,i)=>`<figure><img src="${x.url}" alt="Referência ${i+1}"><button type="button" data-rm="${i}" aria-label="Remover referência ${i+1}">×</button></figure>`).join(""); }
+inp.addEventListener("change",()=>{addFiles(inp.files); inp.value=""});
+thumbs.addEventListener("click",e=>{const b=e.target.closest("[data-rm]"); if(!b)return; URL.revokeObjectURL(files[+b.dataset.rm].url); files.splice(+b.dataset.rm,1); renderThumbs();});
+["dragenter","dragover"].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add("over")}));
+["dragleave","drop"].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove("over")}));
+drop.addEventListener("drop",e=>addFiles(e.dataTransfer.files));
+
+const form=$("#bookForm"); let msg="";
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(form)); let first=null;
+  form.querySelectorAll(".q[data-req]").forEach(q=>{
+    const k=q.dataset.req, bad=!(d[k]||"").trim(); q.classList.toggle("bad",bad);
+    if(bad&&!first) first=q;
+  });
+  if(first){ first.scrollIntoView({behavior:"smooth",block:"center"}); (first.querySelector("input,textarea")||{}).focus?.({preventScroll:true}); return; }
+  msg=`Olá, Jadson! Vim pelo site e quero um orçamento.\n\nNome: ${d.nome}\nContato: ${d.contato}\nEstilo: ${d.estilo}\nLocal do corpo: ${d.local}\nTamanho aproximado: ${d.tamanho}\n\nIdeia: ${d.ideia}`+(files.length?`\n\nTenho ${files.length} referência(s) visual(is) para enviar aqui na conversa.`:"");
+  $("#outMsg").textContent=msg;
+  $("#outHint").textContent = files.length
+    ? `Copie a mensagem e envie no Direct do Instagram. Anexe na conversa as ${files.length} referência(s) que você escolheu — elas ficam só no seu aparelho.`
+    : "Copie a mensagem e envie no Direct do Instagram. Se tiver referências, anexe na conversa.";
+  const o=$("#out"); o.classList.add("show"); o.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+form.addEventListener("change",e=>{const q=e.target.closest(".q"); if(q) q.classList.remove("bad")});
+form.addEventListener("input",e=>{const q=e.target.closest(".q"); if(q&&e.target.value.trim()) q.classList.remove("bad")});
+$("#copy").addEventListener("click",async e=>{const b=e.currentTarget;
+  try{await navigator.clipboard.writeText(msg); b.textContent="Copiado ✓"}
+  catch{const r=document.createRange(); r.selectNodeContents($("#outMsg")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent="Texto selecionado"}
+  setTimeout(()=>b.textContent="Copiar mensagem",2400)});
+
+/* ---------- reveals ---------- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} }),{rootMargin:"0px 0px -10% 0px",threshold:.05});
+document.querySelectorAll(".rv,.rv-img,.split:not(#heroTitle),.rule").forEach(el=>io.observe(el));
+
+/* ---------- intro ---------- */
+$("#yr").textContent=new Date().getFullYear();
+function startHero(){ $("#heroMedia").classList.add("zoom"); $("#heroTitle").classList.add("in"); setTimeout(()=>$("#heroBot").classList.add("in"),500); }
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let seen=false; try{ seen=sessionStorage.getItem("tj-intro")==="1"; }catch{}
+if(reduce||seen){ document.body.classList.add("no-intro"); startHero(); }
+else{
+  document.body.style.overflow="hidden"; const t0=performance.now(), D=1500;
+  (function tickN(now){ const p=Math.min(1,(now-t0)/D), v=Math.round((1-Math.pow(1-p,3))*100);
+    $("#count").textContent=pad(v); $("#bar").style.width=v+"%";
+    if(p<1) requestAnimationFrame(tickN);
+    else{ $("#intro").classList.add("out"); document.body.style.overflow=""; setTimeout(startHero,250); try{sessionStorage.setItem("tj-intro","1")}catch{} }
+  })(t0);
+}
+</script>
+</body>
+</html>
