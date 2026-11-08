@@ -1,0 +1,3 @@
+# Homologação: não indexar. Na publicação final, trocar por "Allow: /" e remover X-Robots-Tag do _headers.
+User-agent: *
+Disallow: /
