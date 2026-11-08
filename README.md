@@ -23,3 +23,13 @@ Cada site tem um bloco `CONFIG` no início do `<script>`:
 - Fotos: listas `PORTFOLIO` / `WORKS` apontam para arquivos em `img/`.
 
 Feito em HTML, CSS e JavaScript puros: não precisa instalar nada nem compilar.
+
+## Publicação no Cloudflare Pages
+
+Site estático, sem etapa de build.
+
+- Framework preset: **None**
+- Build command: *(vazio)*
+- Build output directory: **/** (raiz do repositório)
+
+O arquivo `_headers` define cache longo para `img/`.

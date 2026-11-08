@@ -217,6 +217,12 @@ section{position:relative}
 .about{border-top:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:5fr 1fr 6fr;gap:0;align-items:start}
 .about-photo{position:relative;aspect-ratio:4/5;grid-column:1}
+.portrait{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(70% 55% at 50% 45%,#1d1d1c 0%,var(--graphite) 55%,#0d0d0d 100%);border:1px solid var(--line);overflow:hidden}
+.portrait img{position:relative;z-index:1;width:min(84%,440px);aspect-ratio:1/1;height:auto;border-radius:50%;object-fit:cover;box-shadow:0 30px 80px -30px rgba(0,0,0,.9)}
+.portrait .ring{position:absolute;z-index:0;width:min(94%,492px);aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(194,83,47,.55)}
+.portrait .ring::after{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--ember)}
+.portrait-cap{position:absolute;left:20px;bottom:18px;z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.portrait-cap em{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:0;font-size:14px;color:var(--ice)}
 .about-photo .cap{position:absolute;right:-14px;top:24px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);translate:100% 0}
 .about-body{grid-column:3;padding-top:clamp(0px,4vw,60px)}
 .about-body h2{font-size:clamp(46px,6.6vw,104px);margin:18px 0 clamp(28px,4vw,48px)}
@@ -481,7 +487,7 @@ section{position:relative}
         <li><a href="#portfolio">Portfólio</a></li>
         <li><a href="#estilos">Estilos</a></li>
         <li><a href="#processo">Processo</a></li>
-        <li><a href="#contato" class="btn btn-solid">Orçamento</a></li>
+        <li><a href="#contato" data-wa class="btn btn-solid">Orçamento</a></li>
       </ul>
     </nav>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
@@ -498,7 +504,7 @@ section{position:relative}
   </ol>
   <div class="mm-foot">
     <span>Delmiro Gouveia - AL · Seg a Sáb, 09h às 21h</span>
-    <a class="btn btn-solid" data-ig href="#">Chamar no Instagram <span class="arr">→</span></a>
+    <a class="btn btn-solid" data-wa href="#contato">Orçamento no WhatsApp <span class="arr">↗</span></a>
   </div>
 </div>
 
@@ -520,7 +526,7 @@ section{position:relative}
       <p class="lead hero-sub rv rv-d2">Arte, identidade e expressão em cada detalhe. Conheça o trabalho de Jadson Felipe.</p>
       <div class="hero-cta rv rv-d3">
         <a href="#portfolio" class="btn btn-solid">Explorar portfólio <span class="arr">→</span></a>
-        <a href="#contato" class="btn">Fazer orçamento <span class="arr">→</span></a>
+        <a href="#contato" data-wa class="btn">Fazer orçamento <span class="arr">↗</span></a>
       </div>
     </div>
     <div class="hero-visual">
@@ -606,7 +612,7 @@ section{position:relative}
       <li class="rv rv-d3"><h3>Solicite seu orçamento</h3><p>Com tudo definido, você recebe o valor e combina a data.</p></li>
     </ol>
     <div class="process-cta rv">
-      <a href="#contato" class="btn btn-solid">Começar meu orçamento <span class="arr">→</span></a>
+      <a href="#contato" data-wa class="btn btn-solid">Pedir orçamento no WhatsApp <span class="arr">↗</span></a>
       <p>Segunda a sábado, das 09h às 21h.</p>
     </div>
   </div>
@@ -625,10 +631,11 @@ section{position:relative}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><small>Cidade</small><strong>Delmiro Gouveia - AL</strong></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><small>Horário</small><strong>Segunda a sábado · 09h às 21h</strong></div></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H8l-4 4z"/></svg><div><small>Orçamentos</small><strong>Pelo Instagram ou WhatsApp</strong></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12a8 8 0 01-11.8 7L4 20l1.1-4A8 8 0 1120 12z"/></svg><div><small>WhatsApp</small><strong data-wa-label>(82) 98746-7533</strong></div></li>
         </ul>
         <div class="contact-btns">
           <a class="btn btn-solid" data-ig href="#"><span style="display:flex;gap:14px;align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>Instagram · @_tattoojad_</span><span class="arr">↗</span></a>
-          <a class="btn" id="waBtn" href="#"><span style="display:flex;gap:14px;align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12a8 8 0 01-11.8 7L4 20l1.1-4A8 8 0 1120 12z"/><path d="M9 9.5c.3 2.4 2.1 4.3 4.5 4.8l1.2-1.2 1.8.8-.3 1.6c-3.8.3-7.6-3.3-7.3-7.3L10.5 8l.8 1.8z" stroke-width="1.2"/></svg>WhatsApp</span><span class="arr">↗</span></a>
+          <a class="btn" id="waBtn" href="#"><span style="display:flex;gap:14px;align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12a8 8 0 01-11.8 7L4 20l1.1-4A8 8 0 1120 12z"/><path d="M9 9.5c.3 2.4 2.1 4.3 4.5 4.8l1.2-1.2 1.8.8-.3 1.6c-3.8.3-7.6-3.3-7.3-7.3L10.5 8l.8 1.8z" stroke-width="1.2"/></svg>WhatsApp · <span data-wa-label>(82) 98746-7533</span></span><span class="arr">↗</span></a>
           <p class="wa-note" id="waNote"></p>
         </div>
       </div>
@@ -655,12 +662,12 @@ section{position:relative}
           <div class="field full"><label for="f-ideia">Descreva sua ideia</label><textarea id="f-ideia" name="ideia" placeholder="Conte o que você imagina, tamanho aproximado e se já tem referência." required></textarea><span class="err">Descreva sua ideia em poucas palavras.</span></div>
         </div>
         <div class="form-actions">
-          <p>Sua mensagem é montada aqui e enviada por você, pelo Instagram ou WhatsApp.</p>
-          <button type="submit" class="btn btn-solid">Montar meu pedido <span class="arr">→</span></button>
+          <p>Ao enviar, o WhatsApp do Jadson abre com o seu pedido já escrito. É só tocar em enviar.</p>
+          <button type="submit" class="btn btn-solid">Enviar pelo WhatsApp <span class="arr">↗</span></button>
         </div>
         <div class="result" id="result" aria-live="polite">
           <h4>Pedido pronto.</h4>
-          <p>Copie a mensagem e envie pelo canal que preferir. As referências em imagem você anexa na conversa.</p>
+          <p>Se o WhatsApp não abriu, use o botão abaixo ou copie a mensagem. As referências em imagem você anexa na conversa.</p>
           <pre id="resultMsg"></pre>
           <div class="row">
             <button type="button" class="btn" id="copyBtn">Copiar mensagem</button>
@@ -682,7 +689,7 @@ section{position:relative}
       <div><h4>Tattoo JAD</h4><p>Jadson Felipe, tatuador em Delmiro Gouveia - AL. Black Work, Geek, Old School e muito mais.</p></div>
       <div><h4>Navegue</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#portfolio">Portfólio</a></li><li><a href="#estilos">Estilos</a></li><li><a href="#processo">Processo</a></li></ul></div>
       <div><h4>Atendimento</h4><ul><li>Segunda a sábado</li><li>09h às 21h</li><li>Delmiro Gouveia - AL</li></ul></div>
-      <div><h4>Contato</h4><ul><li><a data-ig href="#">Instagram ↗</a></li><li><a class="wa-link" href="#">WhatsApp ↗</a></li><li><a href="#contato">Pedir orçamento</a></li></ul></div>
+      <div><h4>Contato</h4><ul><li><a data-ig href="#">Instagram ↗</a></li><li><a class="wa-link" href="#">WhatsApp ↗</a></li><li><a href="#contato" data-wa>Pedir orçamento ↗</a></li></ul></div>
     </div>
     <div class="footer-bot"><span>© <span id="year"></span> Tattoo JAD · Jadson Felipe. Todos os direitos reservados.</span><a href="#inicio" class="to-top">Voltar ao topo ↑</a></div>
   </div>
@@ -712,9 +719,11 @@ section{position:relative}
 const CONFIG = {
   instagram: "https://www.instagram.com/_tattoojad_/",
   instagramDM: "https://ig.me/m/_tattoojad_",
-  whatsapp: "",
+  whatsapp: "5582987467533",                 /* (82) 98746-7533 */
+  whatsappLabel: "(82) 98746-7533",
+  whatsappMsg: "Olá, Jadson! Vim pelo seu site e gostaria de solicitar um orçamento para uma tatuagem.",
   heroImage: "../img/hannya.jpg",
-  artistImage: "",
+  artistImage: "../img/jadson-perfil.jpg",
 };
 
 const STYLES = [
@@ -848,7 +857,7 @@ document.getElementById("heroFrame").innerHTML = CONFIG.heroImage
   ? `<img src="${CONFIG.heroImage}" alt="Tatuagem feita por Jadson Felipe" fetchpriority="high">`
   : placeholder("blackwork", "Foto principal", "Imagem a adicionar");
 document.getElementById("artistPhoto").innerHTML = CONFIG.artistImage
-  ? `<img src="${CONFIG.artistImage}" alt="Jadson Felipe, tatuador" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+  ? `<div class="portrait"><span class="ring" aria-hidden="true"></span><img src="${CONFIG.artistImage}" alt="Jadson Felipe tatuando as costas de um cliente" width="756" height="756" loading="lazy" decoding="async"><span class="portrait-cap">Jadson Felipe <em>em sessão</em></span></div>`
   : placeholder("fineline", "Retrato do artista", "Foto a adicionar");
 
 /* =========================================================
@@ -856,14 +865,17 @@ document.getElementById("artistPhoto").innerHTML = CONFIG.artistImage
    ========================================================= */
 document.querySelectorAll("[data-ig]").forEach(a => { a.href = CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll("[data-ig-dm]").forEach(a => { a.href = CONFIG.instagramDM; a.target = "_blank"; a.rel = "noopener"; });
-const waURL = (msg = "Olá, Jadson! Vim pelo site e quero fazer um orçamento.") =>
+const waURL = (msg = CONFIG.whatsappMsg) =>
   CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}` : null;
 const waBtn = document.getElementById("waBtn");
-[waBtn, ...document.querySelectorAll(".wa-link")].forEach(a => {
+[waBtn, ...document.querySelectorAll(".wa-link,[data-wa]")].forEach(a => {
   if (waURL()) { a.href = waURL(); a.target = "_blank"; a.rel = "noopener"; }
   else { a.setAttribute("aria-disabled","true"); a.addEventListener("click", e => e.preventDefault()); }
 });
-if (!CONFIG.whatsapp) document.getElementById("waNote").textContent = "Número do WhatsApp em breve. Por enquanto, chame no Direct do Instagram.";
+document.getElementById("waNote").textContent = CONFIG.whatsapp
+  ? `Atendimento pelo WhatsApp ${CONFIG.whatsappLabel} · seg a sáb, 09h às 21h.`
+  : "Número do WhatsApp em breve. Por enquanto, chame no Direct do Instagram.";
+document.querySelectorAll("[data-wa-label]").forEach(el => el.textContent = CONFIG.whatsappLabel);
 
 /* =========================================================
    PORTFÓLIO
@@ -982,10 +994,13 @@ form.addEventListener("submit", e => {
   });
   if (!ok) return;
   const d = Object.fromEntries(new FormData(form));
-  lastMsg = `Olá, Jadson! Vim pelo site e quero fazer um orçamento.\n\nNome: ${d.nome}\nContato: ${d.contato}\nEstilo: ${d.estilo}\nRegião do corpo: ${d.regiao}\n\nIdeia: ${d.ideia}`;
+  lastMsg = `${CONFIG.whatsappMsg}\n\nNome: ${d.nome}\nContato: ${d.contato}\nEstilo: ${d.estilo}\nRegião do corpo: ${d.regiao}\n\nIdeia: ${d.ideia}`;
   document.getElementById("resultMsg").textContent = lastMsg;
   const ws = document.getElementById("waSend");
-  if (waURL()) { ws.hidden = false; ws.href = waURL(lastMsg); ws.target = "_blank"; ws.rel = "noopener"; }
+  if (waURL()) { ws.hidden = false; ws.href = waURL(lastMsg); ws.target = "_blank"; ws.rel = "noopener";
+    const w = window.open(waURL(lastMsg), "_blank", "noopener");   /* abre a conversa já com o pedido */
+    document.querySelector("#result h4").textContent = w ? "WhatsApp aberto com o seu pedido." : "Pedido pronto.";
+  }
   result.classList.add("show");
   result.scrollIntoView({ behavior:"smooth", block:"nearest" });
 });
